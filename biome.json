@@ -1,6 +1,10 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite/biome/core", "ultracite/biome/react", "ultracite/biome/next"],
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next"
+  ],
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -9,7 +13,6 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
-      "**",
       "!**/.next",
       "!**/dist",
       "!**/.turbo",
@@ -27,7 +30,11 @@
       "!**/.svelte-kit",
       "!**/wrangler.jsonc",
       "!**/.source",
-      "!**/convex/_generated"
+      "!**/convex/_generated",
+      "!apps/web/src/components/ui",
+      "!apps/web/src/lib/composer-*.ts",
+      "!apps/web/src/hooks/use-composer-editor.ts",
+      "!apps/web/src/hooks/use-media-query.ts"
     ]
   },
   "formatter": {
@@ -43,10 +50,13 @@
         "useExhaustiveDependencies": "info"
       },
       "nursery": {
-        "useTailwindSortedClasses": {
+        "useSortedClasses": {
           "level": "warn",
           "fix": "safe"
         }
+      },
+      "performance": {
+        "noJsxPropsBind": "off"
       },
       "style": {
         "noParameterAssign": "error",

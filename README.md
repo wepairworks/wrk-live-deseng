@@ -2,12 +2,15 @@
 
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Self, ORPC, and more.
 
+**Candidates: start with [EXERCISE.md](./EXERCISE.md).**
+
 ## Features
 
 - **TypeScript** - For type safety and improved developer experience
 - **Next.js** - Full-stack React framework
 - **TailwindCSS** - Utility-first CSS for rapid UI development
-- **Shared UI package** - shadcn/ui primitives live in `packages/ui`
+- **coss ui** - [Base UI components](https://coss.com/ui) live in `apps/web/src/components/ui`
+- **Storybook + Vitest** - Component stories and Testing Library tests in `apps/web`
 - **oRPC** - End-to-end type-safe APIs with OpenAPI integration
 - **Drizzle** - TypeScript-first ORM
 - **SQLite/Turso** - Database engine
@@ -47,29 +50,24 @@ Open [http://localhost:3001](http://localhost:3001) in your browser to see the f
 
 ## UI Customization
 
-React web apps in this stack share shadcn/ui primitives through `packages/ui`.
+UI primitives come from [coss ui](https://coss.com/ui/docs) and live in `apps/web/src/components/ui`. They are vendored source: edit them freely. Biome ignores that folder.
 
-- Change design tokens and global styles in `packages/ui/src/styles/globals.css`
-- Update shared primitives in `packages/ui/src/components/*`
-- Adjust shadcn aliases or style config in `packages/ui/components.json` and `apps/web/components.json`
+- Change theme and product tokens in `apps/web/src/index.css`
+- Adjust shadcn aliases or style config in `apps/web/components.json`
 
-### Add more shared components
+### Add more components
 
-Run this from the project root to add more primitives to the shared UI package:
+Run this from `apps/web`:
 
 ```bash
-npx shadcn@latest add accordion dialog popover sheet table -c packages/ui
+bunx shadcn@latest add @coss/<component>
 ```
 
-Import shared components like this:
+Import components like this:
 
 ```tsx
-import { Button } from "@wrk-live-deseng/ui/components/button";
+import { Button } from "@/components/ui/button";
 ```
-
-### Add app-specific blocks
-
-If you want to add app-specific blocks instead of shared primitives, run the shadcn CLI from `apps/web`.
 
 ## Environment Configuration
 
@@ -90,9 +88,8 @@ Run standalone Node/Bun tools that use Varlock from the owning app directory so 
 ```
 wrk-live-deseng/
 ├── apps/
-│   └── web/         # Fullstack application (Next.js)
+│   └── web/         # Fullstack application (Next.js, coss ui, Storybook)
 ├── packages/
-│   ├── ui/          # Shared shadcn/ui components and styles
 │   ├── api/         # API layer / business logic
 │   ├── auth/        # Authentication configuration & logic
 │   └── db/          # Database schema & queries
@@ -104,6 +101,8 @@ wrk-live-deseng/
 - `bun run build`: Build all applications
 - `bun run dev:web`: Start only the web application
 - `bun run check-types`: Check TypeScript types across all apps
+- `cd apps/web && bun run test`: Run Vitest
+- `cd apps/web && bun run storybook`: Start Storybook on port 6006
 - `bun run db:push`: Push schema changes to database
 - `bun run db:generate`: Generate database client/types
 - `bun run db:migrate`: Run database migrations

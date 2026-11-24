@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001",
+    "auth:generate": "varlock run -- bun x auth@latest generate --config src/services.ts --output ../../packages/db/src/schema/auth.ts --yes",
     "build": "tsc -b ../../packages/api && next build",
+    "build-storybook": "storybook build",
     "check-types": "tsc -b ../../packages/api && tsc --noEmit",
-    "start": "next start",
+    "dev": "next dev --port 3001",
     "env:generate": "varlock codegen",
-    "auth:generate": "varlock run -- bun x auth@latest generate --config src/services.ts --output ../../packages/db/src/schema/auth.ts --yes"
+    "start": "next start",
+    "storybook": "storybook dev --port 6006",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@daypicker/react": "^10.0.2",
     "@libsql/client": "catalog:",
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",
@@ -24,9 +30,10 @@
     "@wrk-live-deseng/api": "workspace:*",
     "@wrk-live-deseng/auth": "workspace:*",
     "@wrk-live-deseng/db": "workspace:*",
-    "@wrk-live-deseng/ui": "workspace:*",
     "babel-plugin-react-compiler": "^1.0.0",
     "better-auth": "catalog:",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "evlog": "^2.35.1",
     "libsql": "catalog:",
     "lucide-react": "catalog:",
@@ -34,18 +41,28 @@
     "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "sonner": "catalog:",
+    "tailwind-merge": "^3.7.1",
     "varlock": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@storybook/nextjs-vite": "^10.6.8",
     "@tailwindcss/postcss": "catalog:",
     "@tanstack/react-query-devtools": "^5.107.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^8.0.0",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.13",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@wrk-live-deseng/config": "workspace:*",
+    "jsdom": "^31.0.1",
+    "storybook": "^10.6.8",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "tw-animate-css": "^1.4.0",
+    "typescript": "catalog:",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
   }
 }

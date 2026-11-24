@@ -1,5 +1,9 @@
 {
-  "references": [{ "path": "../../packages/api" }],
+  "references": [
+    {
+      "path": "../../packages/api"
+    }
+  ],
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,8 +25,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@wrk-live-deseng/ui/*": ["../../packages/ui/src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

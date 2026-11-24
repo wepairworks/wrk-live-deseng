@@ -58,6 +58,7 @@ dev-dist
 .dev.vars*
 
 .open-next
+/storybook-static
 
 !.env.schema
 /src/env.ts
