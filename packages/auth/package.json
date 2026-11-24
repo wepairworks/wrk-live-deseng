@@ -1,0 +1,24 @@
+{
+  "name": "@wrk-live-deseng/auth",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check-types": "tsc -b"
+  },
+  "dependencies": {
+    "@better-auth/core": "1.7.22",
+    "@better-auth/drizzle-adapter": "1.7.22",
+    "@wrk-live-deseng/db": "workspace:*",
+    "better-auth": "catalog:",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@wrk-live-deseng/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

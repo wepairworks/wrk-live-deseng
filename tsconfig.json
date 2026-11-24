@@ -1,0 +1,3 @@
+{
+  "extends": "@wrk-live-deseng/config/tsconfig.base.json"
+}

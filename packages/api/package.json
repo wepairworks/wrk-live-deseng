@@ -1,0 +1,25 @@
+{
+  "name": "@wrk-live-deseng/api",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check-types": "tsc -b"
+  },
+  "dependencies": {
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "@wrk-live-deseng/auth": "workspace:*",
+    "@wrk-live-deseng/db": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@wrk-live-deseng/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
